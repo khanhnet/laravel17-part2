@@ -2,18 +2,18 @@
 @section('content')
 <div class="container">
 	<a href="{{route('todos.index')}}" class="btn btn-primary">Back</a>
-	<form action="#" method="POST" class="" role="form">
+	<form action="{{route('todos.store')}}" method="POST" class="" role="form">
 		@csrf
 		<div class="form-group">
 			<legend>Add todo</legend>
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="todo">Todo:</label>
-			<input name="todo" type="text" class="form-control" id="todo" placeholder="Enter todo">
+			<input name="title" type="text" class="form-control" id="todo" placeholder="Enter todo">
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="todo">Mô tả:</label>
-			<textarea name="todo" class="form-control"></textarea>
+			<input name="content" type="text" class="form-control" id="todo" placeholder="Enter todo">
 		</div>
 
 

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+use App\Todo;
 class TodoController extends Controller
 {
     /**
@@ -13,7 +14,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $list=['HTML','CSS','JS','JAVA','PHP'];//dữ liệu fake
+        $list=Todo::get();
     return view('todo.index')->with('list',$list);
     }
 
@@ -35,7 +36,9 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        DB::table('todos')->insert(['title' => $request->title, 'content' => $request->content]);
+        return redirect('todos');
     }
 
     /**
@@ -46,7 +49,8 @@ class TodoController extends Controller
      */
     public function show($id)
     {
-        return view('todo.show');
+        $todo=Todo::find($id);
+        return view('todo.show')->with('todo',$todo);
     }
 
     /**
@@ -57,7 +61,8 @@ class TodoController extends Controller
      */
     public function edit($id)
     {
-        return view('todo.edit');
+        $todo=Todo::where('id', $id)->first();
+        return view('todo.edit')->with('todo',$todo);
     }
 
     /**
@@ -69,7 +74,8 @@ class TodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('todos')->where('id', $id)-> update(['title' => $request->title, 'content' => $request->content]);
+        return redirect('todos');
     }
 
     /**
@@ -80,6 +86,7 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('users')->where('id',$id)->delete();
+        return redirect('todos');
     }
 }
