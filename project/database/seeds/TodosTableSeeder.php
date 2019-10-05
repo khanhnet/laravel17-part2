@@ -12,11 +12,13 @@ class TodosTableSeeder extends Seeder
     public function run()
     {
     	$faker = \Faker\Factory::create();
-    	for ($i = 0 ; $i < 200; $i++){
+    	for ($i = 0 ; $i < 50; $i++){
     		\DB::table('todos')->insert([
     			'title'  => $faker->text(20),
     			'content' => $faker->text(200),
                 'user_id' => $faker->randomDigit(),
+                'created_at'=>\Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at'=>\Carbon\Carbon::now()->format('Y-m-d H:i:s'),
     		]);
     	}
     }

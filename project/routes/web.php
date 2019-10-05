@@ -139,4 +139,6 @@ Route::get('index', 'AdminController@index');
 Route::get('setting', 'SettingController@index');
 });
 
+
 Route::resource('todos', 'TodoController');
+Route::resource('users', 'UserController');

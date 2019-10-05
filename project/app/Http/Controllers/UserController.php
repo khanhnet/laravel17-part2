@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Todo;
-class TodoController extends Controller
+use App\User;
+use Hash;
+
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,18 +15,18 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $list=Todo::get();
-    return view('todo.index')->with('list',$list);
+        $list=User::get();
+    return view('User.index')->with('list',$list);
     }
 
-    /**
+   /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        return view('todo.add');
+        return view('user.add');
     }
 
     /**
@@ -36,21 +37,18 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
-        $random=rand(10,100);
         // Nhận dữ liệu từ $request
-        $title = $request->get('title');
-        $content = $request->get('content');
-        $status = $request->get('status');
-        // Lưu dữ liệu vào đối tượng $todo
-        $todo = new Todo();
-        $todo->title = $title;
-        $todo->content = $content;
-        $todo->status = $status;
-        $todo->user_id = $random;
-        $todo->save();
+        $name = $request->get('name');
+        $email = $request->get('email');
+        $password=Hash::make('12345678');
+        // Lưu dữ liệu vào đối tượng $user
+        $user = new user();
+        $user->name = $name;
+        $user->email = $email;
+        $user->password = $password;
+        $user->save();
         // Chuyển hướng về trang danh sách
-        return redirect()->route('todos.index');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -61,8 +59,8 @@ class TodoController extends Controller
      */
     public function show($id)
     {
-        $todo=Todo::find($id);
-        return view('todo.show')->with('todo',$todo);
+        $user=user::find($id);
+        return view('user.show')->with('user',$user);
     }
 
     /**
@@ -74,9 +72,9 @@ class TodoController extends Controller
     public function edit($id)
     {
          
-        // Tìm todo tương ứng với id
-        $todo = Todo::find($id);
-        return view('todo.edit')->with('item',$todo);
+        // Tìm user tương ứng với id
+        $user = user::find($id);
+        return view('user.edit')->with('item',$user);
     }
 
     /**
@@ -89,20 +87,18 @@ class TodoController extends Controller
     public function update(Request $request, $id)
     {
         // Nhận dữ liệu từ $request
-        $title = $request->get('title');
-        $content = $request->get('content');
-        $status = $request->get('status');
+         $name = $request->get('name');
+        $email = $request->get('email');
         
-        // Tìm todo tương ứng với id
-        $todo = Todo::find($id);
+        // Tìm user tương ứng với id
+        $user = user::find($id);
         //Cập nhật dữ liệu mới
-        $todo->title = $title;
-        $todo->content = $content;
-        $todo->status = $status;
+        $user->name = $name;
+        $user->email = $email;
         // Lưu dữ liệu
-        $todo->save();
+        $user->save();
         //Chuyển hướng đến trang danh sách
-        return redirect()->route('todos.index');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -113,7 +109,7 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-        Todo::destroy($id);
-       return redirect()->route('todos.index');
+        user::destroy($id);
+       return redirect()->route('users.index');
     }
 }
