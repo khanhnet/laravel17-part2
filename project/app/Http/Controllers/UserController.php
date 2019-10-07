@@ -40,7 +40,7 @@ class UserController extends Controller
         // Nhận dữ liệu từ $request
         $name = $request->get('name');
         $email = $request->get('email');
-        $password=Hash::make('12345678');
+        $password=Hash::make('12345678');//tạo mật khẩu giả
         // Lưu dữ liệu vào đối tượng $user
         $user = new user();
         $user->name = $name;
