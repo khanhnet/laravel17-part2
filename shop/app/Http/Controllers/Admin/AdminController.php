@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
+use App\UserInfo;
 
 class AdminController extends Controller
 {
@@ -46,7 +48,12 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+        /*$user=User::find($id);
+        $info=$user->userInfo;
+        dd($info);*/
+        $user=UserInfo::find($id);
+        $info=$user->user;
+        dd($info);
     }
 
     /**

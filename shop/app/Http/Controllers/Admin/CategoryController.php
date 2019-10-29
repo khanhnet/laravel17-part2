@@ -4,9 +4,22 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Policies\CategoryPolicy;
+use App\Category;
+use App\User;
+use App\Permission;
+use Datatables;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\CategoryRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,28 +27,55 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $per=Permission::find(3);
+        $user=Auth::user();
+        dd($user->permissions);
         return view('admin.categories.index');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getData()
     {
-        return view('admin.categories.create');
+        $categories=Category::get();
+        return datatables()->of($categories)
+        ->addIndexColumn()
+        ->editColumn('image', function ($category) {
+            return '<img src="' . $category->image . '" class="img-avatar-list" style="max-width: 100px">';
+        })
+        ->editColumn('parent_id', function ($category) {
+            $category_parent=$category->find($category->parent_id);
+            return $category_parent['name'];
+        })
+        ->addColumn("action", function($category) {
+
+            return 
+            '<a class="btn btn-warning btn-edit" id="edit" data-id="'.$category->id.'" data-toggle="tooltip" data-placement="bottom" title="Xem hoặc sửa"><i class="fa fa-edit text-white"></i></a>
+            <a class="btn btn-danger btn-delete" id="delete" data-id="'.$category->id.'" data-toggle="tooltip" data-placement="bottom" title="Xóa"><i class="fa fa-trash text-white"></i></a>';
+        })
+        ->rawColumns(['action','image'])
+        ->make(true);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\CategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        $category= new Category();
+        $category->name=$request->name;
+        $category->slug=$request->slug;
+        $category->description=$request->description;
+        $category->parent_id=$request->parent_id;
+        $category->image=$request->image;
+        $category->save();
+        return response()->json(['message' => true]);
     }
 
     /**
@@ -44,20 +84,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getDetail($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $category=Category::find($id);
+        return response()->json(['category' => $category]);
     }
 
     /**
@@ -67,9 +97,16 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        //
+            $category=Category::find($id);
+            $category->name=$request->name;
+            $category->slug=$request->slug;
+            $category->description=$request->description;
+            $category->parent_id=$request->parent_id;
+            $category->image=$request->image;
+            $category->save();
+            return response()->json(['message' => true]);
     }
 
     /**
@@ -80,6 +117,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::find($id)->delete();
+
+        return response()->json(['message'=>'true']);
     }
 }

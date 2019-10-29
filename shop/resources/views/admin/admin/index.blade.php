@@ -52,36 +52,18 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>183</td>
-                                <td>hoannc@gmail.com</td>
-                                <td>John Doe</td>
-                                <td>11-7-2014</td>
+                            @foreach($users as $user)
+                           <tr>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->created_at }}</td>
                                 <td><span class="tag tag-success">Approved</span></td>
                             </tr>
-                            <tr>
-                                <td>219</td>
-                                <td>hoannc@gmail.com</td>
-                                <td>Alexander Pierce</td>
-                                <td>11-7-2014</td>
-                                <td><span class="tag tag-warning">Pending</span></td>
-                            </tr>
-                            <tr>
-                                <td>657</td>
-                                <td>hoannc@gmail.com</td>
-                                <td>Bob Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="tag tag-primary">Approved</span></td>
-                            </tr>
-                            <tr>
-                                <td>175</td>
-                                <td>hoannc@gmail.com</td>
-                                <td>Mike Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="tag tag-danger">Denied</span></td>
-                            </tr>
+                            @endforeach
                             </tbody>
                         </table>
+                        <p>{!! $users->links() !!}</p>
                     </div>
                     <!-- /.card-body -->
                 </div>

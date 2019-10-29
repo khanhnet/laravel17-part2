@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>AdminLTE 3 | Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,6 +27,7 @@
     <link rel="stylesheet" href="/admin/plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    @yield('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -60,10 +62,6 @@
     <script src="/admin/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="/admin/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button)
-    </script>
     <!-- Bootstrap 4 -->
     <script src="/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- ChartJS -->
@@ -80,6 +78,8 @@
     <script src="/admin/plugins/daterangepicker/daterangepicker.js"></script>
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/javascript.util/0.12.12/javascript.util.min.js"></script>
     <!-- Summernote -->
     <script src="/admin/plugins/summernote/summernote-bs4.min.js"></script>
     <!-- overlayScrollbars -->
@@ -90,5 +90,12 @@
     <script src="/admin/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="/admin/dist/js/demo.js"></script>
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
+      })
+  </script>
+  @yield('script')
 </body>
 </html>

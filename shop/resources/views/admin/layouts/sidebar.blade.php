@@ -33,53 +33,24 @@
 
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('products.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-shopping-basket"></i>
                             <p>
                                 Quản lý sản phẩm
-                                <i class="fas fa-angle-left right"></i>
-                                <span class="badge badge-info right">6</span>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="pages/layout/top-nav.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Tạo mới</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/boxed.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Danh sách</p>
-                                </a>
-                            </li>
 
-                        </ul>
                     </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-chart-pie"></i>
+                     <li class="nav-item has-treeview">
+                        <a href="{{ route('categories.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 Quản lý danh mục
-                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="pages/charts/chartjs.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Tạo mới</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/charts/flot.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Danh sách</p>
-                                </a>
-                            </li>
-                        </ul>
+
                     </li>
+
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-tree"></i>
