@@ -3,7 +3,7 @@
         <a href="index3.html" class="brand-link">
             <img src="/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">My shop</span>
+            <span class="brand-text font-weight-light">NKStore</span>
         </a>
 
         <!-- Sidebar -->
@@ -11,10 +11,11 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="/admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    <img @if(Auth::user()->image!=null) src="{{ Auth::user()->image }}"
+                    @else src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" @endif class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Nguyễn Công Hoan</a>
+                    <a href="#" class="d-block">{{ Auth::user()->name }}</a>
                 </div>
             </div>
 
@@ -24,7 +25,9 @@
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                     <li class="nav-item has-treeview menu-open">
-                        <a href="./index.html" class="nav-link active">
+                        <a href="{{ route('admin.dashboard') }}" 
+                        @if(url()->current() == route('admin.dashboard')) class="nav-link active"
+                        @else class="nav-link" @endif>
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Dashboard
@@ -32,25 +35,58 @@
                         </a>
 
                     </li>
+
+                    @can('permission','list-admin')
+                     <li class="nav-item has-treeview">
+                        <a href="{{ route('admin.index') }}" 
+                        @if(url()->current() == route('admin.index')) class="nav-link active"
+                        @else class="nav-link" @endif>
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                Quản lý người dùng
+                            </p>
+                        </a>
+                    </li>
+                    @endcan
+
+                    @can('permission','list-product')
                     <li class="nav-item has-treeview">
-                        <a href="{{ route('products.index') }}" class="nav-link">
+                        <a href="{{ route('products.index') }}"
+                        @if(url()->current() == route('products.index')) class="nav-link active"
+                        @else class="nav-link" @endif>
                             <i class="nav-icon fas fa-shopping-basket"></i>
                             <p>
                                 Quản lý sản phẩm
                             </p>
                         </a>
-
                     </li>
+                    @endcan
+
+                    @can('permission','list-category')
                      <li class="nav-item has-treeview">
-                        <a href="{{ route('categories.index') }}" class="nav-link">
+                        <a href="{{ route('categories.index') }}" 
+                        @if(url()->current() == route('categories.index')) class="nav-link active"
+                        @else class="nav-link" @endif>
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 Quản lý danh mục
                             </p>
                         </a>
-
                     </li>
+                    @endcan
 
+                     @can('permission','list-category')
+                     <li class="nav-item has-treeview">
+                        <a href="{{ route('options.index') }}" 
+                        @if(url()->current() == route('options.index')) class="nav-link active"
+                        @else class="nav-link" @endif>
+                            <i class="nav-icon fas fa-filter"></i>
+                            <p>
+                                Quản lý option
+                            </p>
+                        </a>
+                    </li>
+                    @endcan
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-tree"></i>

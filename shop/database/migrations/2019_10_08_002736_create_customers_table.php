@@ -26,8 +26,8 @@ class CreateCustomersTable extends Migration
            $table->date('birthday')->nullable();
            $table->string('address')->nullable();
            $table->string('password');
-           $table->tinyInteger('status')->comment('trạng thái:hoạt động=1;không hoạt động=0');
-           $table->tinyInteger('is_active')->comment('trạng thái:đã kích hoạt=1;chưa kích hoạt=0');
+           $table->tinyInteger('status')->comment('trạng thái:hoạt động=1;không hoạt động=0')->default('0');
+           $table->tinyInteger('is_active')->comment('trạng thái:đã kích hoạt=1;chưa kích hoạt=0')->default('0');
            $table->timestamps();
            $table->softDeletes();
        });

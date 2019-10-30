@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
-});
+Route::get('/404', function () {
+  return view('admin.404');
+})->name('404');
 
 Auth::routes();
 
@@ -27,7 +27,8 @@ Route::group([
   Route::get('/dashboard', 'DashboardController@index')->name('admin.dashboard');
     // Quản lý sản phẩm
   Route::group(['prefix' => 'products','as'=>'products.'], function(){
-    Route::resource('/', 'ProductController');
+    Route::get('/', 'ProductController@index')->name('index');
+    Route::post('/', 'ProductController@store')->name('store');
     Route::get('/getdata', 'ProductController@getData')->name('getdata');
     Route::get('/getdetail/{id}', 'ProductController@getDetail')->name('getdetail');
     Route::post('/update/{id}', 'ProductController@update')->name('update');
@@ -44,11 +45,21 @@ Route::group([
  });
     //Quản lý người dùng
   Route::group(['prefix' => 'admin','as'=>'admin.'], function(){
-    Route::resource('/', 'AdminController');
-    Route::get('/getdata', 'CategoryController@getData')->name('getdata');
-    Route::get('/getdetail/{id}', 'CategoryController@getDetail')->name('getdetail');
-    Route::post('/update/{id}', 'CategoryController@update')->name('update');
-    Route::put('/delete/{id}', 'CategoryController@destroy')->name('destroy');
+    Route::get('/', 'AdminController@index')->name('index');
+    Route::post('/', 'AdminController@store')->name('store');
+    Route::get('/getdata', 'AdminController@getData')->name('getdata');
+    Route::get('/getdetail/{id}', 'AdminController@getDetail')->name('getdetail');
+    Route::post('/update/{id}', 'AdminController@update')->name('update');
+    Route::put('/delete/{id}', 'AdminController@destroy')->name('destroy');
+  });
+  //Quản lý người dùng
+  Route::group(['prefix' => 'options','as'=>'options.'], function(){
+    Route::get('/', 'OptionController@index')->name('index');
+    Route::post('/', 'OptionController@store')->name('store');
+    Route::get('/getdata', 'AdminController@getData')->name('getdata');
+    Route::get('/getdetail/{id}', 'OptionController@getDetail')->name('getdetail');
+    Route::post('/update/{id}', 'OptionController@update')->name('update');
+    Route::put('/delete/{id}', 'OptionController@destroy')->name('destroy');
   });
 });
 

@@ -16,11 +16,11 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');;
             $table->bigInteger('customer_id')->unsigned();
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');;
             $table->bigInteger('user_answer')->unsigned();
-            $table->foreign('user_answer')->references('id')->on('users');
+            $table->foreign('user_answer')->references('id')->on('users')->onDelete('cascade');;
             $table->string('question');
             $table->string('answer')->nullable();
             $table->timestamps();

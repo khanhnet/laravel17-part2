@@ -9,13 +9,6 @@
         <div class="col-sm-6">
             <h1 class="m-0 text-dark">Danh sách danh mục</h1>
         </div><!-- /.col -->
-        <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('categories.index') }}">Danh mục</a></li>
-                <li class="breadcrumb-item active">Danh sách</li>
-            </ol>
-        </div><!-- /.col -->
     </div><!-- /.row -->
 </div><!-- /.container-fluid -->
 @endsection
@@ -23,7 +16,9 @@
 @section('content')
 <!-- Content -->
 <div class="container-fluid">
+    @can('permission','add-category')
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" data-toggle="tooltip" data-placement="bottom" title="Thêm mới"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    @endcan
     <p></p>
     <!-- Main row -->
     <div class="row">
@@ -73,9 +68,9 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     $.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
 });
     function ChangeToSlug()
     {
@@ -112,8 +107,8 @@
     document.getElementById('add_slug').value = slug;
 }
 function ChangeToSlugE()
-    {
-        var title, slug;
+{
+    var title, slug;
 
     //Lấy text từ thẻ input title 
     title = document.getElementById("edit_title").value;
@@ -215,24 +210,24 @@ $(document).on('submit', '#form_create_category', function(){
 })
 
 $("#categories_table").on("click", ".btn-edit", function(){
- $('.error').html("");
- $('#modal_edit').modal("show");
- let id = $(this).attr('data-id');
- $.ajax({
-        type:'GET',
-        url:'/admin/categories/getdetail/'+id,
-        success: function (res) {
-            $('.error').html("");
-            $('#edit_title').val(res.category.name);
-            $('#edit_slug').val(res.category.slug);
-            $('#edit_thumbnail').val(res.category.image);
-            $('#edit_holder').attr("src", res.category.image);
-            $('#edit_description').summernote('code', res.category.description);
-            document.getElementById('category-'+res.category.id+'').selected = true;
-        },
-    })
+   $('.error').html("");
+   $('#modal_edit').modal("show");
+   let id = $(this).attr('data-id');
+   $.ajax({
+    type:'GET',
+    url:'/admin/categories/getdetail/'+id,
+    success: function (res) {
+        $('.error').html("");
+        $('#edit_title').val(res.category.name);
+        $('#edit_slug').val(res.category.slug);
+        $('#edit_thumbnail').val(res.category.image);
+        $('#edit_holder').attr("src", res.category.image);
+        $('#edit_description').summernote('code', res.category.description);
+        document.getElementById('category-'+res.category.id+'').selected = true;
+    },
+})
 
-$(document).on('submit', '#form_edit_category', function(){
+   $(document).on('submit', '#form_edit_category', function(){
     var formData = new FormData($('#form_edit_category')[0]);
     //console.log(formData);
     $.ajax({
@@ -263,26 +258,39 @@ $(document).on('submit', '#form_edit_category', function(){
 });
 
 $("#categories_table").on("click", ".btn-delete", function(){
- let id = $(this).attr('data-id');
- $.ajax({
-        url:'/admin/categories/delete/'+id,
-        type:'PUT',
-        data: {
-            "id": id,
-        },
-        success: function () {
-            $('#form_create_category').trigger("reset");
-            $('#categories_table').DataTable().ajax.reload(null, false);
-            swal({
-                title: "Thành công!",
-                text: "Bạn đã xóa thành công!",
-                icon: "success",
-                button: "OK!",
-            });
-        },
-    })
+   let id = $(this).attr('data-id');
+   swal({
+      title: "Bạn có chắc không ?",
+      text: "Sau khi xóa bạn không thể khôi phục danh mục này!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+  })
+   .then((willDelete) => {
+      if (willDelete) {
+          $.ajax({
+            url:'/admin/categories/delete/'+id,
+            type:'PUT',
+            data: {
+                "id": id,
+            },
+            success: function () {
+                $('#form_create_category').trigger("reset");
+                $('#categories_table').DataTable().ajax.reload(null, false);
+                swal({
+                    title: "Thành công!",
+                    text: "Bạn đã xóa thành công!",
+                    icon: "success",
+                    button: "OK!",
+                });
+            },
+        })
+      } else {
+        swal("Bạn đã hủy thao tác này!");
+    }
 });
 
+});
 </script>
 @endsection
 

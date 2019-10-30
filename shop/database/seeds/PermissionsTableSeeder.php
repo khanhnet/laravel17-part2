@@ -67,5 +67,36 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'Xem danh sách danh mục',
             
         ]);
+        //quyền cho admin
+        DB::table('permissions')->insert([
+            'name' => 'Thêm mới admin',
+            'slug' => 'add-admin',
+            'description' => 'Thêm mới admin',
+            
+        ]);
+        DB::table('permissions')->insert([
+            'name' => 'Sửa admin',
+            'slug' => 'update-admin',
+            'description' => 'Sửa admin',
+            
+        ]);
+        DB::table('permissions')->insert([
+            'name' => 'Xóa admin',
+            'slug' => 'delete-admin',
+            'description' => 'Xóa admin',
+            
+        ]);
+        DB::table('permissions')->insert([
+            'name' => 'Xem danh sách admin',
+            'slug' => 'list-admin',
+            'description' => 'Xem danh sách admin',
+            
+        ]);
+        DB::table('permissions')->insert([
+            'name' => 'Kích hoạt/Hủy kích hoạt admin',
+            'slug' => 'active-admin',
+            'description' => 'Kích hoạt/Hủy kích hoạt admin',
+            
+        ]);
     }
 }
