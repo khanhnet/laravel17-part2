@@ -24,25 +24,6 @@
 							<p class="slug-error text-danger"></p>
 						</div>
 
-						<div class="form-group">
-							<label>Giá</label>
-							<input type="number" min="0" name="price" class="form-control slug" id="add_price" placeholder="Nhập giá">
-							<p class="price-error text-danger"></p>
-						</div>
-
-						<div class="form-group">
-							<label>Số lượng</label>
-							<input type="number" min="0" name="amount" class="form-control slug" id="add_amount" placeholder="Nhập số lượng">
-							<p class="amount-error text-danger"></p>
-						</div>
-
-						<div class="form-group">
-							<label>Mô tả sản phẩm</label>
-							<textarea class="textarea" name="description" placeholder="Mô tả"
-							style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-							<p class="description-error text-danger"></p>
-						</div>
-
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<label class="input-group-text" >Danh mục sản phẩm</label>
@@ -55,6 +36,27 @@
 							</select>
 						</div>
 						<p class="category_id-error text-danger"></p>
+
+						{{-- <div class="form-group">
+							<label>Giá</label>
+							<input type="number" min="0" name="price" class="form-control slug" id="add_price" placeholder="Nhập giá">
+							<p class="price-error text-danger"></p>
+						</div>
+
+						<div class="form-group">
+							<label>Số lượng</label>
+							<input type="number" min="0" name="amount" class="form-control slug" id="add_amount" placeholder="Nhập số lượng">
+							<p class="amount-error text-danger"></p>
+						</div> --}}
+
+						<div class="form-group">
+							<label>Mô tả sản phẩm</label>
+							<textarea class="textarea" name="description" placeholder="Mô tả"
+							style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+							<p class="description-error text-danger"></p>
+						</div>
+
+						
 						<div class="form-group">
 							<label for="exampleInputFile">Hình ảnh sản phẩm</label>
 							<div class="input-group">

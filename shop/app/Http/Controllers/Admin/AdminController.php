@@ -74,7 +74,7 @@ class AdminController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \Illuminate\Http\AdminCreateRequest  $request
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(AdminCreateRequest $request)
@@ -94,6 +94,17 @@ class AdminController extends Controller
 	}else{
 			return redirect()->route('404');
 		}
+	}
+
+	/**
+	 * kích hoạt hoặc hủy kích hoạt admin
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function active($id)
+	{
+		//
 	}
 
 	/**

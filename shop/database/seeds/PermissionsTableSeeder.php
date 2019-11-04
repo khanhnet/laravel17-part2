@@ -98,5 +98,36 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'Kích hoạt/Hủy kích hoạt admin',
             
         ]);
+        DB::table('permissions')->insert([
+            'name' => 'Phân quyền admin',
+            'slug' => 'permissions-admin',
+            'description' => 'Phân quyền admin',
+            
+        ]);
+        //quyền cho option
+        DB::table('permissions')->insert([
+            'name' => 'Thêm mới option',
+            'slug' => 'add-option',
+            'description' => 'Thêm mới option',
+            
+        ]);
+        DB::table('permissions')->insert([
+            'name' => 'Sửa option',
+            'slug' => 'update-option',
+            'description' => 'Sửa option',
+            
+        ]);
+        DB::table('permissions')->insert([
+            'name' => 'Xóa option',
+            'slug' => 'delete-option',
+            'description' => 'Xóa option',
+            
+        ]);
+        DB::table('permissions')->insert([
+            'name' => 'Xem danh sách option',
+            'slug' => 'list-option',
+            'description' => 'Xem danh sách option',
+            
+        ]);
     }
 }

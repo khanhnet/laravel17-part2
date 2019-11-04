@@ -19,8 +19,6 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->text('description');
-            $table->bigInteger('price');
-            $table->integer('amount');
             $table->bigInteger('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');;
             $table->tinyInteger('status')->comment('Trạng thái:Hiện=1;Ẩn=0')->default('0');

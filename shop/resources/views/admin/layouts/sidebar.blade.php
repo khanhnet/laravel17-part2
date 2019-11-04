@@ -15,7 +15,7 @@
                     @else src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" @endif class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                    <a href="{{ route('admin.profile') }}" class="d-block">{{ Auth::user()->name }}</a>
                 </div>
             </div>
 
@@ -91,7 +91,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-tree"></i>
                             <p>
-                                Quản lý người dùng
+                                Quản lý sự kiện
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -99,13 +99,13 @@
                             <li class="nav-item">
                                 <a href="pages/UI/general.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Tạo mới</p>
+                                    <p>Sale</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="pages/UI/icons.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Danh sách</p>
+                                    <p>Sinh nhật</p>
                                 </a>
                             </li>
                         </ul>

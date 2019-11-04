@@ -20,6 +20,7 @@ class CreateOptionsTable extends Migration
             $table->integer('parent_id')->nullable();
             $table->string('name');
             $table->string('value')->nullable();
+            $table->tinyInteger('is_general')->comment('chung=1;riêng=0')->default('0');
             $table->timestamps();
         });
     }

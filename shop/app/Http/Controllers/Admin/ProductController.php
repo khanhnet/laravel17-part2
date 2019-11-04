@@ -13,6 +13,7 @@ use App\Product;
 use App\Category;
 use App\User;
 use App\Image;
+use Session;
 
 class ProductController extends Controller
 {
@@ -81,6 +82,7 @@ class ProductController extends Controller
 	 */
 	public function store(ProductRequest $request)
 	{
+		//dd($request->all());
 		if (Gate::allows('permission','add-product')){
 			$user=Auth::user();
 			$code='SP'.time();
@@ -89,19 +91,18 @@ class ProductController extends Controller
 			$product->name=$request->name;
 			$product->slug=$request->slug;
 			$product->description=$request->description;
-			$product->amount=$request->amount;
-			$product->price=$request->price;
 			$product->category_id=$request->category_id;
 			$product->note=$request->note;
 			$product->status=$request->status;
 			$product->user_id=$user->id;
 			$product->save();
 
-			$product_id=Product::where('code',$code)->first();
-			$image= new Image();
-			$image->product_id=$product_id->id;
-			$image->path=$request->image;
-			$image->save();
+			// $product_id=Product::where('code',$code)->first();
+			// $image= new Image();
+			// $image->product_id=$product_id->id;
+			// $image->path=$request->image;
+			// $image->save();
+			$request->session()->flash('status', 'Tạo sản phẩm thành công!');
 			return response()->json(['message' => true]);
 		}else{
 			return redirect()->route('404');

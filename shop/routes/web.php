@@ -47,6 +47,7 @@ Route::group([
   Route::group(['prefix' => 'admin','as'=>'admin.'], function(){
     Route::get('/', 'AdminController@index')->name('index');
     Route::post('/', 'AdminController@store')->name('store');
+    Route::get('/profile', 'AdminController@show')->name('profile');
     Route::get('/getdata', 'AdminController@getData')->name('getdata');
     Route::get('/getdetail/{id}', 'AdminController@getDetail')->name('getdetail');
     Route::post('/update/{id}', 'AdminController@update')->name('update');
@@ -56,7 +57,7 @@ Route::group([
   Route::group(['prefix' => 'options','as'=>'options.'], function(){
     Route::get('/', 'OptionController@index')->name('index');
     Route::post('/', 'OptionController@store')->name('store');
-    Route::get('/getdata', 'AdminController@getData')->name('getdata');
+    Route::get('/getdata', 'OptionController@getData')->name('getdata');
     Route::get('/getdetail/{id}', 'OptionController@getDetail')->name('getdetail');
     Route::post('/update/{id}', 'OptionController@update')->name('update');
     Route::put('/delete/{id}', 'OptionController@destroy')->name('destroy');
