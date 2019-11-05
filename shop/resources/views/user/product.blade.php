@@ -131,10 +131,10 @@
 
 							<ul class="product-links">
 								<li>Share:</li>
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i></a></li>
+								<li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="javascript:;"><i class="fa fa-envelope"></i></a></li>
 							</ul>
 
 						</div>
@@ -146,9 +146,9 @@
 						<div id="product-tab">
 							<!-- product tab nav -->
 							<ul class="tab-nav">
-								<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
-								<li><a data-toggle="tab" href="#tab2">Details</a></li>
-								<li><a data-toggle="tab" href="#tab3">Reviews (3)</a></li>
+								<li class="active"><a data-toggle="tab" href="#tab1">Mô tả</a></li>
+								<li><a data-toggle="tab" href="#tab2">Chi tiết</a></li>
+								<li><a data-toggle="tab" href="#tab3">Nhận xét</a></li>
 							</ul>
 							<!-- /product tab nav -->
 
@@ -333,7 +333,7 @@
 													<input class="input" type="email" placeholder="Your Email">
 													<textarea class="input" placeholder="Your Review"></textarea>
 													<div class="input-rating">
-														<span>Your Rating: </span>
+														<span>Đánh giá của bạn: </span>
 														<div class="stars">
 															<input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
 															<input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
@@ -342,7 +342,7 @@
 															<input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
 														</div>
 													</div>
-													<button class="primary-btn">Submit</button>
+													<button class="primary-btn">Xác nhận</button>
 												</form>
 											</div>
 										</div>
@@ -370,7 +370,7 @@
 
 					<div class="col-md-12">
 						<div class="section-title text-center">
-							<h3 class="title">Related Products</h3>
+							<h3 class="title">Sản phẩm liên quan</h3>
 						</div>
 					</div>
 

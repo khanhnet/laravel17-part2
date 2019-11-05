@@ -62,7 +62,7 @@
                     <!-- section title -->
                     <div class="col-md-12">
                         <div class="section-title">
-                            <h3 class="title">New Products</h3>
+                            <h3 class="title">Sản phẩm mới</h3>
                             <div class="section-nav">
                                 <ul class="section-tab-nav tab-nav">
                                     <li class="active"><a data-toggle="tab" href="#tab1">Laptops</a></li>
@@ -275,7 +275,7 @@
                                     </div>
                                 </li>
                             </ul>
-                            <h2 class="text-uppercase">hot deal this week</h2>
+                            <h2 class="text-uppercase">hot deal tuần này</h2>
                             <p>New Collection Up to 50% OFF</p>
                             <a class="primary-btn cta-btn" href="#">Shop now</a>
                         </div>

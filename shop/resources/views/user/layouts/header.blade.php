@@ -3,13 +3,13 @@
 			<div id="top-header">
 				<div class="container">
 					<ul class="header-links pull-left">
-						<li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-						<li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-						<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+						<li><a href="javascrip:;"><i class="fa fa-phone"></i> 0975819200</a></li>
+						<li><a href="javascrip:;"><i class="fa fa-envelope-o"></i> khanhnet2632000@gmail.com</a></li>
+						<li><a href="javascrip:;"><i class="fa fa-map-marker"></i>Hà Đông </a></li>
 					</ul>
 					<ul class="header-links pull-right">
-						<li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-						<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+						<li><a href="javascrip:;"><i class="fa fa-dollar"></i> VND</a></li>
+						<li><a href="#"><i class="fa fa-user-o"></i> Tài khoản của tôi</a></li>
 					</ul>
 				</div>
 			</div>
@@ -25,7 +25,7 @@
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="#" class="logo">
-									<img src="./img/logo.png" alt="">
+									<img src="/admin/dist/img/logo.png" alt="NKStore" style="max-width: 100px">
 								</a>
 							</div>
 						</div>
@@ -36,12 +36,14 @@
 							<div class="header-search">
 								<form>
 									<select class="input-select">
-										<option value="0">All Categories</option>
-										<option value="1">Category 01</option>
-										<option value="1">Category 02</option>
+										
+										<option value="0">Danh mục</option>
+										@foreach($categories_parent as $category)
+										<option value="{{ $category->id }}">{{ $category->name }}</option>
+										@endforeach
 									</select>
 									<input class="input" placeholder="Search here">
-									<button class="search-btn">Search</button>
+									<button class="search-btn">Tìm kiếm</button>
 								</form>
 							</div>
 						</div>
@@ -54,7 +56,7 @@
 								<div>
 									<a href="#">
 										<i class="fa fa-heart-o"></i>
-										<span>Your Wishlist</span>
+										<span>Bookmark</span>
 										<div class="qty">2</div>
 									</a>
 								</div>
@@ -64,7 +66,7 @@
 								<div class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-shopping-cart"></i>
-										<span>Your Cart</span>
+										<span>Giỏ hàng</span>
 										<div class="qty">3</div>
 									</a>
 									<div class="cart-dropdown">

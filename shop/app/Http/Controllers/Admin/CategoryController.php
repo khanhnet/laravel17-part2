@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CategoryRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Session;
+use Illuminate\Support\Facades\Cache;
 
 class CategoryController extends Controller
 {

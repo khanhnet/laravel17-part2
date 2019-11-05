@@ -64,13 +64,25 @@ Route::group([
   });
 });
 
- // Route::get('lay', function (){
- //    return view('user.index');
- // })->name('admin.user.index');
+ Route::get('index', function (){
+    return view('user.index');
+ })->name('admin.user.index');
 
- // Route::get('pro', function (){
- //    return view('user.product');
- // })->name('admin.user.index');
+ Route::get('pro', function (){
+    return view('user.product');
+ })->name('admin.user.product');
+
+ Route::get('pro', function (){
+    return view('user.product');
+ })->name('admin.user.product');
+
+ Route::get('checkout', function (){
+    return view('user.checkout');
+ })->name('admin.user.checkout');
+
+  Route::get('store', function (){
+    return view('user.store');
+ })->name('admin.user.store');
 
 // Route::group([
 //     'namespace' => 'User',
