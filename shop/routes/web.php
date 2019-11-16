@@ -88,6 +88,11 @@ Route::get('/del/{rowId}', 'HomeController@delToCart')->name('deltocart');
 
 Route::get('/user-login', 'CustomerController@getLogin')->name('getLoginCustomer');
 Route::post('/user-login', 'CustomerController@postLogin')->name('postLoginCustomer');
+Route::post('/user-create', 'CustomerController@store')->name('postCreateCustomer');
+Route::post('/user-forgot', 'CustomerController@forgot')->name('postForgotCustomer');
+Route::get('/user-forgot', 'CustomerController@getForgot')->name('getForgotCustomer');
+Route::post('/user-change-password', 'CustomerController@changePassword')->name('changepassword');
+Route::get('/user-logout', 'CustomerController@logout')->name('logout');
 
 Route::post('/profile', 'CustomerController@profile')->name('profile');
 Route::post('/confirm', 'Admin\BillController@confirm')->name('confirm');

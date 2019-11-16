@@ -88,19 +88,20 @@ class AdminController extends Controller
 		if (Gate::allows('permission','add-admin')){
 			$code='NV'.time();
 			$password=rand(100000,999999);
-			Mail::send('mail.new_account', array('email'=>$request->email,'password'=>$password), function($message){
-				$message->to($request->email, 'Admin')->subject('Tạo tài khoản');
+			Mail::send('mail.new_account', ['email'=>$request->email,'password'=>$password], function($message) use ($request){
+				$message->to($request->email);
+				$message->subject('Tạo tài khoản');
 			});
-				$admin= new User();
-				$admin->code=$code;
-				$admin->name=$request->name;
-				$admin->email=$request->email;
-				$admin->password= Hash::make($password);
-				$admin->status=0;
-				$admin->is_active=0;
-				$admin->save();
+			$admin= new User();
+			$admin->code=$code;
+			$admin->name=$request->name;
+			$admin->email=$request->email;
+			$admin->password= Hash::make($password);
+			$admin->status=0;
+			$admin->is_active=0;
+			$admin->save();
 
-				
+
 			return response()->json(['message' => true]);
 		}else{
 			return redirect()->route('404');

@@ -14,6 +14,7 @@
 					<p><b>Số điện thoại: </b><span id="mobile"></span></p>
 					<p><b>Địa chỉ: </b><span id="address"></span></p>
 					<p><b>Thời gian mua: </b><span id="created_at"></span></p>
+					<p id="time_ship"></p>
 				</div>
 				<hr>
 				<ul id="detail_bill"></ul>
@@ -21,6 +22,7 @@
 
 				<form role="form" method="post" action="javascript:;" id="form_confirm_status" enctype="multipart/form-data">
 					@csrf
+					<input type="text" name="code" id="input_code" hidden="">
 					<div class="card-body">
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">

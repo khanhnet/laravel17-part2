@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Đăng nhập</title>
+	<title>Quên mật khẩu</title>
 	<style type="text/css">
 		.box {
          position: relative;
@@ -410,78 +410,30 @@
 	<div class="materialContainer">
 
 
-		<form method="post" action="{{ route('getLoginCustomer') }}">
+		<form method="post" action="{{ route('getForgotCustomer') }}">
 			@csrf
 			<div class="box">
 
-            <div class="title">Đăng nhập</div>
-            @if (session('require-login'))
-            <br>
-            <p style="color: red;">{{ session('require-login') }}</p>
-            <br>
-            @endif
+            <div class="title">Quên mật khẩu</div>
             <div class="input">
               <label for="email">Email</label>
               <input type="text" name="email" id="email">
               <span class="spin"></span>
            </div>
-
-           @if (session('status'))
-           <br>
-           <p style="color: red;">{{ session('status') }}</p>
-           @endif
-           @if (session('repassword'))
-           <br>
-           <p style="color: red;">{{ session('repassword') }}</p>
-           @endif
-
-
-           <div class="input">
-              <label for="password">Mật khẩu</label>
-              <input type="password" name="password" id="password">
-              <span class="spin"></span>
-           </div>
+           @if (session('check_email'))
+            <br>
+            <p style="color: red;">{{ session('check_email') }}</p>
+            <br>
+            @endif
 
            <div class="button login">
               <button><span>GO</span> <i class="fa fa-check"></i></button>
            </div>
 
-           <a href="{{ route('getForgotCustomer') }}" class="pass-forgot">Quên mật khẩu?</a>
+           <a href="{{ route('getLoginCustomer') }}" class="pass-forgot">Đăng nhập</a>
 
         </div>
      </form>
-
-     <div class="overbox">
-      <div class="material-button alt-2"><span class="shape"></span></div>
-      <form method="post" action="{{ route('postCreateCustomer') }}">
-         @csrf
-         <div class="title">Đăng kí</div>
-
-         <div class="input">
-           <label for="reemail">Email</label>
-           <input type="text" name="email" id="reemail">
-           <span class="spin"></span>
-        </div>
-
-        <div class="input">
-           <label for="repass">Mật khẩu</label>
-           <input type="password" name="password" id="repass">
-           <span class="spin"></span>
-        </div>
-         
-        <div class="input">
-           <label for="rerepass">Nhập lại mật khẩu</label>
-           <input type="password" name="repassword" id="rerepass">
-           <span class="spin"></span>
-        </div>
-
-        <div class="button">
-         <button type="submit"><span>Tiếp</span></button>
-        </div>
-     </form>
-
-  </div>
-
 </div>
 
 <script src="//code.jquery.com/jquery.js"></script>

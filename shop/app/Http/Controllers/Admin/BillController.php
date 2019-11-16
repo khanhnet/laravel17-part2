@@ -95,6 +95,21 @@ class BillController extends Controller
 
     public function confirmBill (Request $request)
     {
+        if (Gate::allows('permission','confirm-bill')){
+            $bill=Bill::where('code',$request->code)->first();
+            if($request->status==2){
+                $bill->status=$request->status;
+                $bill->time_ship=$request->time_ship;
+                $bill->save();
+            }else{
+                $bill->status=$request->status;
+                $bill->save();
+            }
+
+            return response()->json(['message' => true]);
+        }else{
+            return redirect()->route('404');
+        }
 
     }
 

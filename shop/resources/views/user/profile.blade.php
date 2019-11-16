@@ -12,10 +12,16 @@
 					<div class="section-title">
 						<h3 class="title">Trang cá nhân</h3>
 					</div>
-					<form>
+					@if (session('status'))
+					<br>
+					<p style="color: red;">{{ session('status') }}</p>
+					<br>
+					@endif
+					<form action="{{ route('profile') }}" method="post">
+						@csrf
 						<div class="text-center">
 							
-						<img id="add_holder" style="margin-top:15px;max-height:100px;" src="{{ $customer->image }}">
+							<img id="add_holder" style="margin-top:15px;max-height:100px;" src="{{ $customer->image }}">
 						</div>
 						<div class="form-group">
 							<div class="input-group">
@@ -58,14 +64,22 @@
 
 			<!-- Order Details -->
 			<div class="col-md-5 order-details">
+				<a href="{{ route('logout') }}" class="primary-btn order-submit">Đăng xuất</a>
+				<br>
 				<div class="section-title text-center">
 					<h3 class="title">Đổi mật khẩu</h3>
 				</div>
-				<form>
+				<form action="{{ route('changepassword') }}" method="post">
+					@csrf
 					<label>Mật khẩu cũ</label>
 					<div class="form-group">
 						<input class="input" type="password" name="old_password">
 					</div>
+					@if (session('old_password'))
+					<br>
+					<p style="color: red;">{{ session('old_password') }}</p>
+					<br>
+					@endif
 					<label>Mật khẩu mới</label>
 					<div class="form-group">
 						<input class="input" type="password" name="new_password">
@@ -82,10 +96,10 @@
 </div>
 @endsection
 @section('script')
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
 <script>
-    $('#add_lfm').filemanager('image');
+	$('#add_lfm').filemanager('image');
 </script>
 @endsection
 

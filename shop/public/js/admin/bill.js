@@ -50,10 +50,15 @@ $("#bills_table").on("click", ".btn-edit", function(){
     success: function (res) {
         console.log(res);
         $('#code').html(res.bill.code);
+        $('#input_code').val(res.bill.code);
         $('#name').html(res.bill.to_name);
         $('#address').html(res.bill.to_address);
         $('#mobile').html(res.bill.to_mobile);
         $('#created_at').html(res.bill.created_at);
+        if(res.bill.time_ship!=null){
+
+        $('#time_ship').html('<b>Thời gian giao hàng dự kiến: </b><span>'+res.bill.time_ship+'</span>');
+        }
         $('#total').html(new Intl.NumberFormat('ja-JP', { }).format(res.bill.total));
         $.each(res.bill_details,function(key,value) {
             let price=value.price;
@@ -79,10 +84,9 @@ $("#bills_table").on("click", ".btn-edit", function(){
 
  $(document).on('submit', '#form_confirm_status', function(){
     var formData = new FormData($('#form_confirm_status')[0]);
-    //console.log(formData);
     $.ajax({
         type:'post',
-        url:'/admin/bills/update/'+id,
+        url:'/admin/bills/confirm',
         data:formData,
         processData: false,
         contentType: false,
