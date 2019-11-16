@@ -9,10 +9,13 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "bumbummen99/shoppingcart": "^2.8",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "^6.4",
         "laravel/framework": "^6.0",
         "laravel/helpers": "^1.1",
         "laravel/tinker": "^1.0",
+        "nesbot/carbon": "^2.26",
         "unisharp/laravel-filemanager": "~1.8",
         "yajra/laravel-datatables-oracle": "^9.7"
     },

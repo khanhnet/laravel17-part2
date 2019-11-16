@@ -40,10 +40,10 @@ class ProductController extends Controller
 // 		$cache=Cache::put('name', $products, 60);
 // }
 
-		$value = Cache::remember('name', 60, function() {
-			return DB::table('products')->get();
-		});
-		dd($value);
+		// $value = Cache::remember('name', 60, function() {
+		// 	return DB::table('products')->get();
+		// });
+		// dd($value);
 
 		if (Gate::allows('permission','list-product')) {
 			return view('admin.products.index');
@@ -74,7 +74,7 @@ class ProductController extends Controller
 	 		->addColumn("action", function($product) {
 	 			$action="";
 	 			if (Gate::allows('permission','detail-product')) {
-	 				$action.='<a class="mx-1 my-1 btn btn-success" id="detail" style="width: 40px" data-id="'.$product->id.'"><i class="fa fa-eye text-white"></i></a>';
+	 				// $action.='<a class="mx-1 my-1 btn btn-success btn-show" style="width: 40px" data-id="'.$product->id.'"><i class="fa fa-eye text-white"></i></a>';
 	 			}
 	 			if (Gate::allows('permission','update-product')&&Gate::allows('permission','detail-product')){
 	 				$action.='<a class="mx-1 my-1 btn btn-warning btn-edit" id="edit" style="width: 40px" data-id="'.$product->id.'"><i class="fa fa-edit text-white"></i></a>';
@@ -107,6 +107,8 @@ class ProductController extends Controller
 			$product->code=$code;
 			$product->name=$request->name;
 			$product->slug=$request->slug;
+			$product->price=$request->price;
+			$product->amount=$request->amount;
 			$product->description=$request->description;
 			$product->category_id=$request->category_id;
 			$product->note=$request->note;
@@ -114,11 +116,20 @@ class ProductController extends Controller
 			$product->user_id=$user->id;
 			$product->save();
 
-			// $product_id=Product::where('code',$code)->first();
-			// $image= new Image();
-			// $image->product_id=$product_id->id;
-			// $image->path=$request->image;
-			// $image->save();
+			$product_id=Product::where('code',$code)->first();
+			foreach ($request->images as $path) {
+				$image= new Image();
+				$image->product_id=$product_id->id;
+				$image->path=$path;
+				$image->save();
+			}
+			foreach ($request->options as $option_id) {
+				DB::table('product_options')->insert([
+					'product_id' => $product_id->id,
+					'option_id' => $option_id,
+				]);
+			}
+			
 			$request->session()->flash('status', 'Tạo sản phẩm thành công!');
 			return response()->json(['message' => true]);
 		}else{
@@ -137,7 +148,9 @@ class ProductController extends Controller
 	{
 		if (Gate::allows('permission','detail-product')){
 			$product=Product::find($id);
-			return response()->json(['product' => $product]);
+			$images=Image::where('product_id',$id)->get();
+			$options = DB::table('product_options')->where('product_id', $id)->get();
+			return response()->json(['product' => $product,'images'=>$images,'options'=>$options]);
 		}else{
 			return redirect()->route('404');
 		}
@@ -168,11 +181,21 @@ class ProductController extends Controller
 			$product->user_id=$user->id;
 			$product->save();
 
-			if(!empty($request->image)){
-				$image= Image::where('product_id',$product->id)->first();
-				$image->product_id=$product->id;
-				$image->path=$request->image;
-				$image->save();
+			if(!empty($request->images)){
+				Image::where('product_id',$product->id)->delete();
+				foreach ($request->images as $path) {
+					$image= new Image();
+					$image->product_id=$id;
+					$image->path=$path;
+					$image->save();
+				}
+			}
+			DB::table('product_options')->where('product_id', $id)->delete();
+			foreach ($request->options as $option_id) {
+				DB::table('product_options')->insert([
+					'product_id' => $id,
+					'option_id' => $option_id,
+				]);
 			}
 		}else{
 			return redirect()->route('404');

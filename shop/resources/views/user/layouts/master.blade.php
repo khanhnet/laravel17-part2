@@ -87,6 +87,14 @@
 		<script src="{{ asset('user/js/nouislider.min.js') }}"></script>
 		<script src="{{ asset('user/js/jquery.zoom.min.js') }}"></script>
 		<script src="{{ asset('user/js/main.js') }}"></script>
+		<script src="/vendor/laravel-filemanager/js/lfm.js"></script>
+		<script>
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+		</script>
 
 	</body>
 	</html>

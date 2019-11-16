@@ -37,7 +37,7 @@
 						</div>
 						<p class="category_id-error text-danger"></p>
 
-						{{-- <div class="form-group">
+						<div class="form-group">
 							<label>Giá</label>
 							<input type="number" min="0" name="price" class="form-control slug" id="add_price" placeholder="Nhập giá">
 							<p class="price-error text-danger"></p>
@@ -47,7 +47,7 @@
 							<label>Số lượng</label>
 							<input type="number" min="0" name="amount" class="form-control slug" id="add_amount" placeholder="Nhập số lượng">
 							<p class="amount-error text-danger"></p>
-						</div> --}}
+						</div>
 
 						<div class="form-group">
 							<label>Mô tả sản phẩm</label>
@@ -55,18 +55,6 @@
 							style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
 							<p class="description-error text-danger"></p>
 						</div>
-
-						
-						<div class="form-group">
-							<label for="exampleInputFile">Hình ảnh sản phẩm</label>
-							<div class="input-group">
-								<input type="button" id="add_lfm" data-input="add_thumbnail" data-preview="add_holder" value="Tải lên">
-								<input id="add_thumbnail" class="form-control" type="text" name="image">
-							</div>
-						</div>
-						<p class="image-error text-danger"></p>
-
-						<img id="add_holder" style="margin-top:15px;max-height:100px;">
 
 						<div class="form-group">
 							<label>Chú thích sản phẩm</label>
@@ -84,7 +72,36 @@
 								<option  value="1">Hiện</option>
 							</select>
 						</div>
-							<p class="status-error text-danger"></p>
+						<p class="status-error text-danger"></p>
+
+							<div id="select_option"></div>
+
+							<label>Ảnh sản phẩm</label>
+
+							<a href="javascript:;" id="add_image" class="btn btn-info" title="Thêm ảnh"><i class="fas fa-plus-square"></i></a>
+							<a href="javascript:;" id="re_add_image" class="btn btn-danger" title="Giảm ảnh"><i class="fas fa-minus"></i></a>
+						<br>
+						<div id="div_add_image"></div>
+						<div id="div_preview_image"></div>
+
+						<p class="image-error text-danger"></p>
+
+
+						{{-- <div class="form-group">
+							<label for="exampleInputFile">Hình ảnh sản phẩm</label>
+							<div class="input-group">
+								<input type="button" id="add_lfm" data-input="add_thumbnail" data-preview="add_holder" value="Tải lên">
+								<input id="add_thumbnail" class="form-control" type="text" name="image">
+							</div>
+						</div>
+						<p class="image-error text-danger"></p>
+
+						<img id="add_holder" style="margin-top:15px;max-height:100px;"> --}}
+
+						{{-- <a href="javascript:;" id="add_product_sell" class="btn btn-info" title="Thêm chi tiết sản phẩm"><i class="fas fa-plus-square"></i></a>
+						<br>
+						<div id="div_add_product_sell"></div> --}}
+
 					</div>
 
 

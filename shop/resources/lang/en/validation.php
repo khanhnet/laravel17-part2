@@ -77,17 +77,17 @@ return [
         'array' => 'The :attribute must not have more than :value items.',
     ],
     'max' => [
-        'numeric' => 'The :attribute may not be greater than :max.',
+        'numeric' => ':attribute phải nhỏ hơn :max.',
         'file' => 'The :attribute may not be greater than :max kilobytes.',
-        'string' => 'The :attribute may not be greater than :max characters.',
+        'string' => ':attribute phải nhỏ hơn :max kí tự.',
         'array' => 'The :attribute may not have more than :max items.',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
-        'numeric' => 'The :attribute must be at least :min.',
-        'file' => 'The :attribute must be at least :min kilobytes.',
-        'string' => 'The :attribute must be at least :min characters.',
+        'numeric' => ':attribute phải lớn hơn :min.',
+        'file' => 'The :attribute phải lớn hơn :min kilobytes.',
+        'string' => ':attribute phải lớn hơn :min kí tự.',
         'array' => 'The :attribute must have at least :min items.',
     ],
     'not_in' => 'The selected :attribute is invalid.',
@@ -154,6 +154,10 @@ return [
          'category_id' => 'Danh mục',
          'email' => 'Email',
          'passwords' => 'Mật khẩu',
+         'is_general' => 'Loại thông số',
+         'option' => 'Thông số',
+         'old_password' => 'Mật khẩu cũ',
+         'new_password' => 'Mật khẩu mới',
     ],
 
 ];

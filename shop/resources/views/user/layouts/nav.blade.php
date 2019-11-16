@@ -5,9 +5,9 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="#">Trang chủ</a></li>
+						<li class="active"><a href="/">Trang chủ</a></li>
 						@foreach($categories_parent as $category)
-						<li><a href="#">{{ $category->name }}</a></li>
+						<li><a href="/category/{{ $category->slug }}">{{ $category->name }}</a></li>
 						@endforeach
 					</ul>
 					<!-- /NAV -->

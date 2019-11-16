@@ -79,13 +79,23 @@ class OptionController extends Controller
 	public function store(OptionRequest $request)
 	{
 		if (Gate::allows('permission','add-option')){
-			$option= new Option();
-			$option->name=$request->name;
-			$option->category_id=$request->category_id;
-			$option->value=$request->value;
-			$option->parent_id=$request->parent_id;
-			$option->save();
-			return response()->json(['message' => true]);
+			if($request->is_general==0){
+				$name=Option::find($request->parent_id)->name;
+
+				$option= new Option();
+				$option->name=$name;
+				$option->category_id=$request->category_id;
+				$option->value=$request->value;
+				$option->parent_id=$request->parent_id;
+				$option->save();
+				return response()->json(['message' => true]);
+			}else if($request->is_general==1){
+				$option= new Option();
+				$option->name=$request->name;
+				$option->category_id=$request->category_id;
+				$option->save();
+				return response()->json(['message' => true]);
+			}
 		}else{
 			return redirect()->route('404');
 		}
@@ -108,6 +118,18 @@ class OptionController extends Controller
 	}
 
 	/**
+	 * get option of category.
+	 *
+	 * @param  int  $category_id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function getOptionCategory($category_id)
+	{
+			$options_category=Option::where('category_id',$category_id)->whereNotNull('parent_id')->get();
+			return response()->json(['options_category' => $options_category]);
+	}
+
+	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
@@ -117,13 +139,22 @@ class OptionController extends Controller
 	public function update(OptionRequest $request, $id)
 	{
 		if (Gate::allows('permission','update-option')){
-			$option=option::find($id);
-			$option->name=$request->name;
-			$option->category_id=$request->category_id;
-			$option->value=$request->value;
-			$option->parent_id=$request->parent_id;
-			$option->save();
-			return response()->json(['message' => true]);
+			if($request->is_general==0){
+				$name=Option::find($request->parent_id)->name;
+				$option=option::find($id);
+				$option->name=$name;
+				$option->category_id=$request->category_id;
+				$option->value=$request->value;
+				$option->parent_id=$request->parent_id;
+				$option->save();
+				return response()->json(['message' => true]);
+			}else if($request->is_general==1){
+				$option=option::find($id);
+				$option->name=$request->name;
+				$option->category_id=$request->category_id;
+				$option->save();
+				return response()->json(['message' => true]);
+			}
 		}else{
 			return redirect()->route('404');
 		}

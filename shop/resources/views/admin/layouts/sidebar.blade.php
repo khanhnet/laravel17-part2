@@ -109,6 +109,18 @@
                             </li>
                         </ul>
                     </li>
+                    @can('permission','list-bill')
+                     <li class="nav-item has-treeview">
+                        <a href="{{ route('bills.index') }}" 
+                        @if(url()->current() == route('bills.index')) class="nav-link active"
+                        @else class="nav-link" @endif>
+                            <i class="fas fa-money-bill-alt"></i>
+                            <p>
+                                Quản lý hóa đơn
+                            </p>
+                        </a>
+                    </li>
+                    @endcan
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

@@ -79,9 +79,10 @@ class CategoryController extends Controller
 	public function store(CategoryRequest $request)
 	{
 		if (Gate::allows('permission','add-category')){
+			$slug =str_replace(' ', '', $request->slug);
 		$category= new Category();
 		$category->name=$request->name;
-		$category->slug=$request->slug;
+		$category->slug=$slug;
 		$category->description=$request->description;
 		$category->parent_id=$request->parent_id;
 		$category->image=$request->image;

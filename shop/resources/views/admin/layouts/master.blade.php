@@ -91,6 +91,11 @@
     <!-- AdminLTE for demo purposes -->
     <script src="/admin/dist/js/demo.js"></script>
     <script>
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
         $.widget.bridge('uibutton', $.ui.button)
         $(function () {
           $('[data-toggle="tooltip"]').tooltip()

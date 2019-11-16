@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Option extends Model
 {
-    //
+    public function products(){
+		return $this->belongsToMany('App\Product','product_options');
+	}
 }

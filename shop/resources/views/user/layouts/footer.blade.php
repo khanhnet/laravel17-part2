@@ -22,7 +22,7 @@
 								<h3 class="footer-title">Danh mục</h3>
 								<ul class="footer-links">
 									@foreach($categories_parent as $category)
-									<li><a href="{{ $category->id }}">{{ $category->name }}</a></li>
+									<li><a href="/category/{{ $category->slug }}">{{ $category->name }}</a></li>
 									@endforeach
 								</ul>
 							</div>

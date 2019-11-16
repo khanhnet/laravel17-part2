@@ -1,6 +1,7 @@
 @extends('admin.layouts.master')
 @section('css')
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/css/bootstrap-select.min.css">
 @endsection
 @section('content-header')
 <!-- Content Header -->
@@ -66,5 +67,6 @@
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/bootstrap-select.min.js"></script>
 <script src="/js/admin/product.js"></script>
 @endsection

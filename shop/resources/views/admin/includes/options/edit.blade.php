@@ -12,11 +12,6 @@
 				<form role="form" method="post" action="javascript:;" id="form_edit_option" enctype="multipart/form-data">
 					@csrf
 					<div class="card-body">
-						<div class="form-group">
-							<label>Tên thông số</label>
-							<input type="text" name="name" class="form-control title" placeholder="Điền tên thông số" id="edit_name">
-							<p class="name-error error text-danger"></p>
-						</div>
 
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
@@ -27,6 +22,12 @@
 								<option id="general-0" value="0">Riêng</option>
 								<option id="general-1" value="1">Chung</option>
 							</select>
+						</div>
+
+						<div class="form-group" id="e_div_name">
+							<label>Tên thông số</label>
+							<input type="text" name="name" id="e_name_option" class="form-control title" placeholder="Điền tên thông số" id="edit_name">
+							<p class="name-error error text-danger"></p>
 						</div>
 
 						<div class="form-group" id="div_edit_value">
@@ -41,7 +42,7 @@
 							</div>
 							<select class="custom-select" name="category_id" id="edit_category_id">
 								<option value selected>Chọn danh mục cha</option>
-								@foreach($categories as $category)
+								@foreach($categories_parent as $category)
 								<option id="category-{{ $category->id }}" value="{{ $category->id }}">{{$category->name}}</option>
 								@endforeach
 							</select>

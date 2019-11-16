@@ -138,53 +138,6 @@ $(document).on('submit', '#form_create_admin', function(){
 	})
 })
 
-$("#admins_table").on("click", ".btn-edit", function(){
-   $('.error').html("");
-   $('#modal_edit').modal("show");
-   let id = $(this).attr('data-id');
-   $.ajax({
-	type:'GET',
-	url:'/admin/categories/getdetail/'+id,
-	success: function (res) {
-		$('.error').html("");
-		$('#edit_title').val(res.category.name);
-		$('#edit_slug').val(res.category.slug);
-		$('#edit_thumbnail').val(res.category.image);
-		$('#edit_holder').attr("src", res.category.image);
-		$('#edit_description').summernote('code', res.category.description);
-		document.getElementById('category-'+res.category.id+'').selected = true;
-	},
-})
-
-   $(document).on('submit', '#form_edit_category', function(){
-	var formData = new FormData($('#form_edit_category')[0]);
-	//console.log(formData);
-	$.ajax({
-		type:'post',
-		url:'/admin/categories/update/'+id,
-		data:formData,
-		processData: false,
-		contentType: false,
-		success: function (message) { 
-			$('#form_edit_category').trigger("reset");
-			$('.close').trigger("click");
-			$('#admins_table').DataTable().ajax.reload(null, false);
-			swal({
-				title: "Thành công!",
-				text: "Bạn đã sửa thành công!",
-				icon: "success",
-				button: "OK!",
-			});
-		},
-		error: function(error){
-			$.each(error.responseJSON.errors,function(key,value) {
-				$('.'+key+'-error').html( '<i class="fa fa-times-circle"></i>'+ value);
-			});
-		}
-	})
-})
-
-});
 
 $("#admins_table").on("click", ".btn-delete", function(){
    let id = $(this).attr('data-id');
@@ -198,7 +151,7 @@ $("#admins_table").on("click", ".btn-delete", function(){
    .then((willDelete) => {
 	  if (willDelete) {
 		  $.ajax({
-			url:'/admin/categories/delete/'+id,
+			url:'/admin/admin/delete/'+id,
 			type:'PUT',
 			data: {
 				"id": id,

@@ -55,16 +55,6 @@
 							</select>
 						</div>
 						<p class="category_id-error text-danger"></p>
-						<div class="form-group">
-							<label for="exampleInputFile">Hình ảnh sản phẩm</label>
-							<div class="input-group">
-								<input type="button" id="edit_lfm" data-input="edit_thumbnail" data-preview="edit_holder" value="Tải lên">
-								<input id="edit_thumbnail" class="form-control" type="text" name="image">
-							</div>
-						</div>
-						<p class="image-error text-danger"></p>
-
-						<img id="edit_holder" style="margin-top:15px;max-height:100px;">
 
 						<div class="form-group">
 							<label>Chú thích sản phẩm</label>
@@ -83,7 +73,23 @@
 								<option id="status-1" value="1">Hiện</option>
 							</select>
 						</div>
-							<p class="status-error text-danger"></p>
+						<p class="status-error text-danger"></p>
+
+
+						<p class="status-error text-danger"></p>
+
+						<div id="edit_select_option"></div>
+
+
+						<label>Ảnh sản phẩm</label>
+
+						<a href="javascript:;" id="edit_image" class="btn btn-info" title="Thêm ảnh"><i class="fas fa-plus-square"></i></a>
+						<a href="javascript:;" id="re_edit_image" class="btn btn-danger" title="Giảm ảnh"><i class="fas fa-minus"></i></a>
+						<br>
+						<div id="div_edit_image"></div>
+						<div id="div_edit_preview_image"></div>
+
+						<p class="image-error text-danger"></p>
 					</div>
 
 

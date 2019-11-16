@@ -77,9 +77,13 @@
     if(is_general==1){
         $('#div_value').hide();
         $('#div_parent_id').hide();
+        $('#div_name').show();
+        $('#name_option').val('');
     }else{
         $('#div_value').show();
         $('#div_parent_id').show();
+        $('#div_name').hide();
+        $('#name_option').val('Không cần truyền giá trị');
     }
 
 }
@@ -88,9 +92,13 @@ function editIsGeneral(){
     if(edit_is_general==1){
         $('#div_edit_value').hide();
         $('#div_edit_parent_id').hide();
+        $('#e_div_name').show();
+        $('#e_name_option').val('');
     }else{
         $('#div_edit_value').show();
         $('#div_edit_parent_id').show();
+        $('#e_div_name').hide();
+        $('#e_name_option').val('Không cần truyền giá trị');
     }
 
 }
