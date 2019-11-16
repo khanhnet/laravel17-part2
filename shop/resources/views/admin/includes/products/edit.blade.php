@@ -15,32 +15,32 @@
 						<div class="form-group">
 							<label>Tên sản phẩm</label>
 							<input type="text" name="name" class="form-control title" id="edit_title" onkeyup="ChangeToSlugE();" placeholder="Điền tên sản phẩm">
-							<p class="name-error text-danger"></p>
+							<p class="name-error error text-danger"></p>
 						</div>
 
 						<div class="form-group">
 							<label>Slug</label>
 							<input type="text" name="slug" class="form-control slug" id="edit_slug">
-							<p class="slug-error text-danger"></p>
+							<p class="slug-error error text-danger"></p>
 						</div>
 
 						<div class="form-group">
 							<label>Giá</label>
 							<input type="number" min="0" name="price" class="form-control" id="edit_price" placeholder="Nhập giá">
-							<p class="price-error text-danger"></p>
+							<p class="price-error error text-danger"></p>
 						</div>
 
 						<div class="form-group">
 							<label>Số lượng</label>
 							<input type="number" min="0" name="amount" class="form-control" id="edit_amount" placeholder="Nhập số lượng">
-							<p class="amount-error text-danger"></p>
+							<p class="amount-error error text-danger"></p>
 						</div>
 
 						<div class="form-group">
 							<label>Mô tả sản phẩm</label>
 							<textarea id="edit_description" class="textarea" name="description" placeholder="Mô tả"
 							style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-							<p class="description-error text-danger"></p>
+							<p class="description-error error text-danger"></p>
 						</div>
 
 						<div class="input-group mb-3">
@@ -54,13 +54,13 @@
 								@endforeach
 							</select>
 						</div>
-						<p class="category_id-error text-danger"></p>
+						<p class="category_id-error error text-danger"></p>
 
 						<div class="form-group">
 							<label>Chú thích sản phẩm</label>
 							<textarea class="textarea" name="note" placeholder="Mô tả"
 							style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-							<p class="note-error text-danger"></p>
+							<p class="note-error error text-danger"></p>
 						</div>
 
 						<div class="input-group mb-3">
@@ -73,10 +73,8 @@
 								<option id="status-1" value="1">Hiện</option>
 							</select>
 						</div>
-						<p class="status-error text-danger"></p>
+						<p class="status-error error text-danger"></p>
 
-
-						<p class="status-error text-danger"></p>
 
 						<div id="edit_select_option"></div>
 
@@ -89,7 +87,7 @@
 						<div id="div_edit_image"></div>
 						<div id="div_edit_preview_image"></div>
 
-						<p class="image-error text-danger"></p>
+						<p class="image-error error text-danger"></p>
 					</div>
 
 

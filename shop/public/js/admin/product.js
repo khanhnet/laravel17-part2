@@ -137,12 +137,14 @@ $(document).on('submit', '#form_create_product', function(){
 
 $("#products_table").on("click", ".btn-edit", function(){
    $('#modal_edit').modal("show");
+   $('.error').html("");
    let id = $(this).attr('data-id');
    let i=1;
    $.ajax({
     type:'GET',
     url:'/admin/products/getdetail/'+id,
     success: function (res) {
+        $('.error').html("");
         $('#edit_title').val(res.product.name);
         $('#edit_slug').val(res.product.slug);
         $('#edit_price').val(res.product.price);

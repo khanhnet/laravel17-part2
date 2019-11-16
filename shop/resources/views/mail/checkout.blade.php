@@ -10,6 +10,6 @@
 <li>{{ $product->qty }}x {{ $product->name }}</li>
 @endforeach
 </ul>
-<h2>Tổng tiền :{{ $total }}</h2>
+<h2>Tổng tiền :{{ $total }} VNĐ</h2>
 </body>
 </html>

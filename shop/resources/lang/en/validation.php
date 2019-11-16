@@ -153,6 +153,8 @@ return [
          'status' => 'Trạng thái',
          'category_id' => 'Danh mục',
          'email' => 'Email',
+         'price' => 'Giá',
+         'amount' => 'Số lượng',
          'passwords' => 'Mật khẩu',
          'is_general' => 'Loại thông số',
          'option' => 'Thông số',

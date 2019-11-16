@@ -24,9 +24,9 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>150</h3>
+                                <h3>{{ $product }}</h3>
 
-                                <p>Đơn hàng</p>
+                                <p>Sản phẩm</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
@@ -39,9 +39,9 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>5300</h3>
+                                <h3>{{ $bill }}</h3>
 
-                                <p>Sản phẩm</p>
+                                <p>Hóa đơn</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
@@ -54,7 +54,7 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>44</h3>
+                                <h3>{{ $customer }}</h3>
 
                                 <p>Người dùng</p>
                             </div>
@@ -69,9 +69,9 @@
                         <!-- small box -->
                         <div class="small-box bg-danger">
                             <div class="inner">
-                                <h3>65,000,000 </h3>
+                                <h3>{{ $category }} </h3>
 
-                                <p>Doanh thu</p>
+                                <p>Danh mục</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
@@ -89,15 +89,6 @@
                             <div class="card-header">
                                 <h3 class="card-title">Sản phẩm mới nhập</h3>
 
-                                <div class="card-tools">
-                                    <div class="input-group input-group-sm" style="width: 150px;">
-                                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
@@ -107,39 +98,22 @@
                                         <th>ID</th>
                                         <th>Tên sản phẩm</th>
                                         <th>Thời gian</th>
-                                        <th>Status</th>
-                                        <th>Mô tả</th>
+                                        <th>Giá</th>
+                                        <th>Số lượng</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($products as $product)
                                     <tr>
-                                        <td>183</td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
-                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                        <td>{{ $product->id }}</td>
+                                        <td>{{ $product->name }}</td>
+                                        <td>{{ $product->created_at }}</td>
+                                        <td>{{ number_format($product->price) }}</td>
+                                        <td>{{ number_format($product->amount) }}</td>
+                                        
                                     </tr>
-                                    <tr>
-                                        <td>219</td>
-                                        <td>Alexander Pierce</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-warning">Pending</span></td>
-                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>657</td>
-                                        <td>Bob Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-primary">Approved</span></td>
-                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>175</td>
-                                        <td>Mike Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-danger">Denied</span></td>
-                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    </tr>
+                                    @endforeach
+                                   
                                     </tbody>
                                 </table>
                             </div>
