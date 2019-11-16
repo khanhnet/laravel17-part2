@@ -43,7 +43,7 @@ class BillController extends Controller
             ->editColumn('user_id', function ($bill) {
                 if(isset($bill->user_id)){
                     $user=Customer::find($bill->user_id);
-                    return $customer->email;
+                    return $user->email;
                 }else{
 
                     return 'Chưa xác nhận';
@@ -96,11 +96,21 @@ class BillController extends Controller
     public function confirmBill (Request $request)
     {
         if (Gate::allows('permission','confirm-bill')){
+            $user=Auth::user();
             $bill=Bill::where('code',$request->code)->first();
+            $billDetails=BillDetail::Where('bill_code',$bill->code)->get();
+                //dd($billDetails);
             if($request->status==2){
                 $bill->status=$request->status;
                 $bill->time_ship=$request->time_ship;
+                $bill->user_id=$user->id;
                 $bill->save();
+                foreach ($billDetails as $buy) {
+                    $product=Product::where('code',$buy->product_code)->first();
+                    $amount_product=$product->amount;
+                    $product->amount=$amount_product-$buy->amount_buy;
+                    $product->save();
+                }
             }else{
                 $bill->status=$request->status;
                 $bill->save();

@@ -91,16 +91,16 @@
 					</div> --}}
 
 					<div class="add-to-cart">
-						<div class="qty-label">
+						{{-- <div class="qty-label">
 							SL
 							<div class="input-number">
 								<input type="number" id="number_buy">
 								<span class="qty-up">+</span>
 								<span class="qty-down">-</span>
 							</div>
-						</div>
+						</div> --}}
 						@if($product->amount>0)
-						<button   class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</button>
+						<button onclick=" window.location='/add/{{ $product->code }}/{{ $product->name }}/1/{{ $product->price }}'"  class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</button>
 						@endif
 					</div>
 
